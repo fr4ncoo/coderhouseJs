@@ -1,0 +1,10 @@
+body {
+    background-color: grey;
+}
+.centrar {
+    text-align: center;
+}
+img {
+    display: block;
+    margin: 20px auto;
+}
