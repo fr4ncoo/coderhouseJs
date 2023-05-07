@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style2.css">
+    <title>PreEntrega 3</title>
+</head>
+<body class="light">
+    <h1>PreEntrega 3</h1>
+    <div id="formulario">
+      <h2>Ingresar datos</h2>
+      <form>
+        <label for="nombre">Tu nombre:</label>
+        <input type="text" id="nombre" required><br>
+
+        <label for="email">Tu email:</label>
+        <input type="email" id="email" required><br>
+
+        <label for="telefono">Tu teléfono:</label>
+        <input type="tel" id="telefono" required><br>
+
+        <button id="guardar">Guardar</button>
+      </form>
+    </div>
+
+    <div id="datos-guardados">
+      <h2>Datos guardados en Local Storage</h2>
+      <ul id="lista-datos"></ul>
+    </div>
+    <div class="centrarB">
+    <button id="modonocturno"></button>
+    </div>  
+    <script src="../js/main.js"></script>
+</body>
+</html>

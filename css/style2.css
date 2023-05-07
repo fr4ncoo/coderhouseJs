@@ -1,0 +1,100 @@
+/* Estilos para la página en general */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1 {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    margin: 0;
+    padding: 20px 0;
+  }
+  
+  /* Estilos para el formulario */
+  #formulario {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #666;
+  }
+  
+  /* Estilos para la lista de datos guardados */
+  #datos-guardados {
+    max-width: 500px;
+    margin: 20px auto;
+  }
+  
+  h2 {
+    margin-top: 0;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Estilos para el modo diurno */
+.light {
+    background-color: #fff;
+    color: #000;
+  }
+  
+  /* Estilos para el modo nocturno */
+  .dark {
+    background-color: #000;
+    color: #fff;
+  }
+
+  .centrarB {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  

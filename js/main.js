@@ -1,44 +1,78 @@
-let precio = NaN;
-let cuotas;
-let precioCuota;
-let precioInteres;
+const formulario = document.getElementById('formulario');
+const nombreInput = document.getElementById('nombre');
+const emailInput = document.getElementById('email');
+const telefonoInput = document.getElementById('telefono');
+const guardarButton = document.getElementById('guardar');
+const listaDatos = document.getElementById('lista-datos');
 
-while (isNaN(precio) || precio === 0) {
-    precio = parseInt(prompt("Hola, ingresá el monto total del producto que queres pagar en cuotas:"));
+function actualizarListaDatos() {
+  listaDatos.innerHTML = '';
+
+  for (let i = 0; i < datosGuardados.length; i++) {
+    const datos = datosGuardados[i];
+    const li = document.createElement('li');
+    li.innerHTML = `${datos.nombre}, ${datos.email}, ${datos.telefono}`;
+    listaDatos.appendChild(li);
+  }
 }
 
-while (isNaN(cuotas) || !validarCuotas(cuotas)) {
-    cuotas = parseInt(prompt("¡Genial! Te informamos los intereses según cantidad de cuotas:\n3 Cuotas: SIN INTERÉS.\n6 Cuotas: 10% de interés.\n9 Cuotas: 15% de interés\n12 Cuotas: 20% de interés.\n¿Cuantas cuotas queres hacer? Ingresar solamente el número de cuotas."));
+let datosGuardados = JSON.parse(localStorage.getItem('datos')) || [];
+
+
+actualizarListaDatos();
+
+
+formulario.addEventListener('submit', function(evento) {
+  evento.preventDefault();
+  
+
+  const nombre = nombreInput.value;
+  const email = emailInput.value;
+  const telefono = telefonoInput.value;
+
+  const datos = {
+    nombre: nombre,
+    email: email,
+    telefono: telefono
+  };
+
+  datosGuardados.push(datos);
+
+
+  localStorage.setItem('datos', JSON.stringify(datosGuardados));
+
+  actualizarListaDatos();
+
+  nombreInput.value = '';
+  emailInput.value = '';
+  telefonoInput.value = '';
+});
+
+
+
+
+//modOsc
+
+const modeToggle = document.getElementById('modonocturno');
+const body = document.querySelector('body');
+const isDarkMode = localStorage.getItem('isDarkMode');
+
+if (isDarkMode === 'true') {
+  body.classList.add('dark');
+  modeToggle.innerText = 'Tema de la web CLARO';
+} else {
+  body.classList.remove('dark');
+  modeToggle.innerText = 'Tema de la web OSCURO';
 }
 
-switch (cuotas) {
-    case 3:
-        precioCuota = precio / 3;
-        alert("Seleccionaste 3 cuotas. El precio final es $" + precio.toLocaleString('es-AR') + " y lo pagarás en " + cuotas + " cuotas de $" + precioCuota.toLocaleString('es-AR') + " cada una.");
-        break;
-
-    case 6:
-        precioInteres = precio + (precio * (10 / 100));
-        precioCuota = precioInteres / 6;
-        alert("Seleccionaste 6 cuotas. El precio final es $" + precioInteres.toLocaleString('es-AR') + " y lo pagarás en " + cuotas + " cuotas de $" + precioCuota.toLocaleString('es-AR') + " cada una.");
-        break;
-
-    case 9:
-        precioInteres = precio + (precio * (15 / 100));
-        precioCuota = precioInteres / 9;
-        alert("Seleccionaste 9 cuotas. El precio final es $" + precioInteres.toLocaleString('es-AR') + " y lo pagarás en " + cuotas + " cuotas de $" + precioCuota.toLocaleString('es-AR') + " cada una.");
-        break;
-
-    case 12:
-        precioInteres = precio + (precio * (20 / 100));
-        precioCuota = precioInteres / 12;
-        alert("Seleccionaste 12 cuotas. El precio final es $" + precioInteres.toLocaleString('es-AR') + " y lo pagarás en " + cuotas + " cuotas de $" + precioCuota.toLocaleString('es-AR') + " cada una.");
-        break;
-
-    default:
-        alert("Ingresar un dato de cuotas válido");
-}
-
-function validarCuotas(cuotas) {
-    return cuotas === 3 || cuotas === 6 || cuotas === 9 || cuotas === 12;
-}
+modeToggle.addEventListener('click', function() {
+  body.classList.toggle('dark');
+  
+  if (body.classList.contains('dark')) {
+    modeToggle.innerText = 'Tema de la web CLARO (storage)';
+    localStorage.setItem('isDarkMode', 'true');
+  } else {
+    modeToggle.innerText = 'Tema de la web OSCURO (storage)';
+    localStorage.removeItem('isDarkMode');
+  }
+});
